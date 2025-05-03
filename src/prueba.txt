@@ -1,0 +1,10 @@
+{
+  "title": "Regalos de cumpleaños",
+  "items": [
+    {
+      "id": 1,
+      "name": "Libro",
+      "description": "El señor de los anillos"
+    }
+  ]
+}
