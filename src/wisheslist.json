@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "name": "Electrónica",
+      "articles": [
+        { "id": 101, "name": "Auriculares Bluetooth", "price": 49.99, "status": "pending" },
+        { "id": 102, "name": "Cámara Digital", "price": 299.99, "status": "pending" },
+        { "id": 103, "name": "Tablet 10''", "price": 199.99, "status": "pending" }
+    ]
+    },
+    {
+      "id": 2,
+      "name": "Ropa",
+      "articles": [
+        { "id": 201, "name": "Camiseta", "price": 15.99, "status": "pending" },
+        { "id": 202, "name": "Pantalones", "price": 39.99, "status": "pending" },
+        { "id": 203, "name": "Chaqueta", "price": 89.99, "status": "pending" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Hogar",
+      "articles": [
+        { "id": 301, "name": "Lámpara de mesa", "price": 24.99, "status": "pending" },
+        { "id": 302, "name": "Silla ergonómica", "price": 129.99, "status": "pending" },
+        { "id": 303, "name": "Cortinas opacas", "price": 34.99, "status": "pending" }
+    ]
+    },
+    {
+      "id": 4,
+      "name": "Deportes",
+      "articles": [
+        { "id": 401, "name": "Balón de fútbol", "price": 19.99, "status": "pending" },
+        { "id": 402, "name": "Raqueta de tenis", "price": 79.99, "status": "pending" },
+        { "id": 403, "name": "Bicicleta", "price": 499.99, "status": "pending" }
+      ]
+    }
+  ]
