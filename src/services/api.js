@@ -39,3 +39,13 @@ export const createWishlist = async (newWishlist) => {
   }
 }; 
 
+export const deleteWishlist = async (id) => {
+  try {
+    await axios.delete(`http://localhost:3001/wishlists/${id}`);
+    return { success: true, id };
+  } catch (error) {
+    console.error(`Error al eliminar wishlist ${id}:`, error);
+    throw error;
+  }
+};
+
