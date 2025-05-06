@@ -7,6 +7,8 @@ import { Contact } from "./Pages/Contact"
 import { WishesList } from "./Components/WishesList"
 import { WishCard } from "./Components/WishCard"
 import { WishCardDetails } from "./Pages/WishCardDetails"
+import { CreateWishlist } from "./Pages/CreateWishlist"
+
 
 function App() {
 
@@ -18,6 +20,7 @@ function App() {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/about" element={<About/>}></Route>
         <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/create-wishlist" element={<CreateWishlist />}></Route>
 
         <Route path="/wisheslist/:id" element={<WishesList/>}></Route>
         <Route path="/wisheslist/:id/wish/:id" element={<WishCardDetails/>}></Route>
