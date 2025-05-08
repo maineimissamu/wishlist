@@ -1,15 +1,31 @@
 import { useParams } from "react-router-dom"
-import wishesData from "../wisheslist.json" 
 import { WishCard } from "./WishCard";
 import { useNavigate } from "react-router-dom";
+import { getWishlistById } from "../services/api";
+import { useState, useEffect } from "react";
 
 export function WishesList () {
 
     const {id} = useParams();
-    const navigate = useNavigate()
 
-    const wishLists = wishesData.find((item) => item.id == (id))
-    const allWishes = wishLists.articles
+    const [wishes, setWishes] = useState([]);
+
+    useEffect (() => {
+        const loadWishes = async() => {
+            try {
+                    const data = await getWishlistById(id);
+                    console.log(data)
+                    setWishes(data.items)
+                } catch (err){
+                    console.log(err)
+                }
+        }
+        loadWishes();
+        
+    }, [])
+
+    
+    const navigate = useNavigate()
 
     const goTo = () => {
         navigate("/")
@@ -23,7 +39,7 @@ export function WishesList () {
     
         return(
             <ul>
-                {allWishes.map((wish) => {
+                {wishes.map((wish) => {
                     return(
                         <WishCard wish={wish}/>
                     )
