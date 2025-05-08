@@ -13,19 +13,20 @@ import { CreateWishlist } from "./Pages/CreateWishlist"
 function App() {
 
   return (
-    <div className="container">
+    <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
+      
+      <div className="ml-[250px] flex-1 p-6">
+        <Routes>
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/about" element={<About/>}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/create-wishlist" element={<CreateWishlist />}></Route>
 
-      <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/about" element={<About/>}></Route>
-        <Route path="/contact" element={<Contact />}></Route>
-        <Route path="/create-wishlist" element={<CreateWishlist />}></Route>
-
-        <Route path="/wisheslist/:id" element={<WishesList/>}></Route>
-        <Route path="/wisheslist/:id/wish/:id" element={<WishCardDetails/>}></Route>
-
-      </Routes>
+          <Route path="/wisheslist/:id" element={<WishesList/>}></Route>
+          <Route path="/wisheslist/:id/wish/:id" element={<WishCardDetails/>}></Route>
+        </Routes>
+      </div>
     </div>
   )
 }
