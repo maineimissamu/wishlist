@@ -1,14 +1,30 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
-import wishes from "../wisheslist.json"
-
+import { getWishlists } from "../services/api";
+import { useState, useEffect } from "react";
 export function WishCardDetails(){
 
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const allArticles = wishes.flatMap(wish => wish.articles)
-    const wish = allArticles.find(item => item.id == id)
-    console.log(wish)
+    const [wish, setWish] = useState([]);
+
+    useEffect(() => {
+        const loadWish = async() => {
+            try {
+                    const data = await getWishlists();
+                    console.log(data)
+                    const allArticles = data.flatMap(deseo => deseo.items)
+                    const wishy = allArticles.find(item => item.id == id)
+                    setWish(wishy)
+                } catch (err){
+                    console.log(err)
+                }
+        }
+        loadWish();
+    },[])
+
+
+    
 
 
 
@@ -16,11 +32,9 @@ export function WishCardDetails(){
 
     return(
         <div className="bloque">
-                <p>{wish.name}</p>
-                <p>Price: {wish.price} eur.</p>
-                <p>Priority: {wish.priority}</p>
-                <p>Status: {wish.status}</p>
-                <button onClick={()=>navigate(-1)}>Go back</button>
+            <h3>Product: {wish.name}</h3>
+            <p>Description: {wish.description}</p>
+            <button onClick={()=>navigate(-1)}>Go back</button>
         </div>
     )
 }

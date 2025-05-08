@@ -5,7 +5,6 @@ import { Home } from "./Pages/Home"
 import { About } from "./Pages/About"
 import { Contact } from "./Pages/Contact"
 import { WishesList } from "./Components/WishesList"
-import { WishCard } from "./Components/WishCard"
 import { WishCardDetails } from "./Pages/WishCardDetails"
 
 function App() {

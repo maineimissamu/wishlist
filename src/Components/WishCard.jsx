@@ -12,7 +12,8 @@ const {id} = useParams()
             <div className="bloque">
             <li key={wish.id}>
                 <Link to={`/wisheslist/${id}/wish/${wish.id}`} className="bloque-link">
-                <p>{wish.name}</p>
+                <h2>{wish.name}</h2>
+                <p>{wish.description}</p>
                 <p>Status: {wish.status}</p>
                 </Link>
             </li>
