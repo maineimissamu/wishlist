@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { getWishlists } from "../services/api";
-import { WishesCategories } from "../Components/WishesCategories";
+import { WishesCategories } from "../components/WishesCategories";
 
 
 export function Home() {
@@ -30,15 +30,6 @@ export function Home() {
            
             <WishesCategories wishlists = {wishlists}/>
 
-            <button>Add Wishlist</button>
-            <form>
-                <input
-                    type="text"
-                    placeholder="Nombre"
-                    value=""
-                />
-                <button type="submit">Add</button>
-            </form>
 
         </div>
 
