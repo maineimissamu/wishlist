@@ -28,21 +28,26 @@ export function WishesList() {
     }
     
 
-        return(
-            <div className="px-4 py-6">
+    return(
+        <div className="px-4 py-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
                 {wishes.map((wish) => {
                     return(
-                        <WishCard wish={wish}/>
+                        <WishCard key={wish.id} wish={wish}/>
                     )
                 })}
                 
             </div>
             <div className="w-full flex justify-center mt-6">
-            <button onClick={goTo} className="flex items-center gap-2 bg-white text-green-800 font-bold py-2 px-6 rounded-md shadow-md hover:bg-gray-100 transition-all transform hover:scale-105">See all categories</button>
+                <button 
+                    onClick={() => navigate("/")} 
+                    className="flex items-center gap-2 bg-white text-green-800 font-bold py-2 px-6 rounded-md shadow-md hover:bg-gray-100 transition-all transform hover:scale-105"
+                >
+                    See all categories
+                </button>
             </div>    
             
-            </div>    
-        )
+        </div>    
+    )
 
 }

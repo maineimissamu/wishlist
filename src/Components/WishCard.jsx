@@ -4,8 +4,6 @@ export function WishCard({wish}) {
     const {id} = useParams();
 
 
-const {id} = useParams()
-
     
 
     return(
