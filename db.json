@@ -19,6 +19,11 @@
           "id": 21,
           "name": "Libro",
           "description": "El señor de los anillos"
+        },
+        {
+          "id": 22,
+          "name": "SketchBook",
+          "description": "The best quality of pages in terms of texture."
         }
       ]
     },
