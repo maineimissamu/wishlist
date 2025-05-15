@@ -8,6 +8,7 @@ import { Contact } from "./pages/Contact"
 import { WishesList } from "./components/WishesList"
 import { WishCardDetails } from "./pages/WishCardDetails"
 import { CreateWishlist } from "./pages/CreateWishlist"
+import { AddWishes } from "./Pages/AddWishes"
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -28,6 +29,7 @@ function App() {
           <Route path="/about" element={<About/>} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/create-wishlist" element={<CreateWishlist />} />
+          <Route path="/add-wishes" element={<AddWishes />} />
           <Route path="/wisheslist/:id" element={<WishesList/>} />
           <Route path="/wisheslist/:id/wish/:id" element={<WishCardDetails/>} />
         </Routes>
