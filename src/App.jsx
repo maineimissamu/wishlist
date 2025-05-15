@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import { useState, useEffect } from "react"
 
-import { Sidebar } from "./components/Sidebar"
+import { Sidebar } from "./Components/Sidebar"
 import { Home } from "./pages/Home"
 import { About } from "./pages/About"
 import { Contact } from "./pages/Contact"

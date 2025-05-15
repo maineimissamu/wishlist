@@ -8,6 +8,12 @@
           "id": 11,
           "name": "iPhone 15",
           "description": "El último modelo de iPhone"
+        },
+        {
+          "name": "Producto 1",
+          "price": 100,
+          "status": "active",
+          "id": 10292
         }
       ]
     },

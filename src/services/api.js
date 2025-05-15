@@ -42,3 +42,39 @@ export const deleteWishlist = async (id) => {
   }
 };
 
+
+export const addItem = async(wishlistId, item) => {
+  try {
+    const wishlist = await getWishlistById(wishlistId);
+    const itemId = Math.floor(Math.random() * 100000);
+    const newItem = {...item, id: itemId}
+    wishlist.items.push(newItem);
+    const response = await axios.put(`${API_URL}/wishlists/${wishlistId}`, wishlist);
+    return response.data;
+  } catch (error) {
+    console.error("Error al agregar item:", error);
+    throw error;
+  }
+}
+
+export const deleteItem = async(wishlistId, itemId) => {
+  try {
+    await axios.delete(`${API_URL}/wishlists/${wishlistId}/items/${itemId}`);
+    return { success: true, id: itemId };
+  } catch (error) {
+    console.error("Error al eliminar item:", error);
+    throw error;
+  }
+}
+
+export const updateItem = async(wishlistId, itemId, updatedItem) => {
+  try {
+    const response = await axios.put(`${API_URL}/wishlists/${wishlistId}/items/${itemId}`, updatedItem);
+    return response.data;
+  } catch (error) {
+    console.error("Error al actualizar item:", error);
+    throw error;
+  }
+}
+addItem(1, { name: "Producto 1", price: 100, status: "active" });
+
