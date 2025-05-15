@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { WishCard } from "./WishCard";
 import { getWishlistById } from "../services/api";
 import { useState, useEffect } from "react";
@@ -29,13 +30,19 @@ export function WishesList() {
     
 
     return(
-        <div className="px-4 py-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+        <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto my-12 px-2">
                 {wishes.map((wish) => {
                     return(
                         <WishCard key={wish.id} wish={wish}/>
                     )
                 })}
+
+                <Link to="/add-wishes" className="flex flex-col items-center bg-white rounded-3xl shadow border border-gray-200 hover:shadow-xl group overflow-hidden aspect-square">
+                <div className="flex-1 flex items-center justify-center w-full">
+                    <span className="text-8xl text-gray-400 group-hover:text-emerald-500">+</span>
+                </div>
+                </Link>
                 
             </div>
             <div className="w-full flex justify-center mt-6">
