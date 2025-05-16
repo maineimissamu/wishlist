@@ -24,17 +24,21 @@ export function WishesList() {
         }
     }, [id]);
 
+    const handleDelete = (id) => {
+        setWishes(wishes.filter((wish) => wish.id !== id));
+    }
+
     if (!id) {
         return <h3>No wishes here</h3>;
     }
     
 
     return(
-        <div>
+        <div> 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto my-12 px-2">
                 {wishes.map((wish) => {
                     return(
-                        <WishCard key={wish.id} wish={wish}/>
+                        <WishCard key={wish.id} wish={wish} onDelete={handleDelete}/>
                     )
                 })}
 

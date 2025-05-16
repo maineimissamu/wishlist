@@ -19,7 +19,7 @@
           "name": "Producto 1",
           "price": 100,
           "status": "active",
-            "id": 36011
+          "id": 36011
         },
         {
           "name": "Producto 1",
@@ -164,40 +164,13 @@
           "description": "The best quality of pages in terms of texture."
         },
         {
-          "title": "Libro",
+          "title": "Computer Desktop",
           "image": null,
-          "description": "asdasd",
+          "description": "Computer Asus - Perfect for gaming",
           "status": "",
-          "price": "199",
+          "price": "999.99",
           "priority": "",
-          "id": 86301
-        },
-        {
-          "title": "Libro",
-          "image": null,
-          "description": "asdasd",
-          "status": "",
-          "price": "199",
-          "priority": "",
-          "id": 8360
-        },
-        {
-          "title": "asdasda",
-          "image": null,
-          "description": "asasa",
-          "status": "",
-          "price": "13",
-          "priority": "",
-          "id": 91055
-        },
-        {
-          "title": "librito",
-          "image": null,
-          "description": "el mas bonito",
-          "status": "",
-          "price": "13",
-          "priority": "",
-          "id": 63688
+          "id": 72478
         }
       ]
     },
@@ -209,12 +182,6 @@
     {
       "id": "9b78",
       "title": "test 2",
-      "items": []
-    },
-    {
-      "id": "8bb6",
-      "title": "aaa",
-      "image": null,
       "items": []
     }
   ]
