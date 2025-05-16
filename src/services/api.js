@@ -59,8 +59,10 @@ export const addItem = async(wishlistId, item) => {
 
 export const deleteItem = async(wishlistId, itemId) => {
   try {
-    await axios.delete(`${API_URL}/wishlists/${wishlistId}/items/${itemId}`);
-    return { success: true, id: itemId };
+    const wishlist = await getWishlistById(wishlistId);
+    wishlist.items = wishlist.items.filter(item => item.id !== itemId);
+    const response = await axios.put(`${API_URL}/wishlists/${wishlistId}`, wishlist);
+    return response.data;
   } catch (error) {
     console.error("Error al eliminar item:", error);
     throw error;
@@ -76,5 +78,4 @@ export const updateItem = async(wishlistId, itemId, updatedItem) => {
     throw error;
   }
 }
-addItem(1, { name: "Producto 1", price: 100, status: "active" });
 

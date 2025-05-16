@@ -14,6 +14,12 @@
           "price": 100,
           "status": "active",
           "id": 10292
+        },
+        {
+          "name": "Producto 1",
+          "price": 100,
+          "status": "active",
+          "id": 36011
         }
       ]
     },
@@ -36,11 +42,6 @@
     {
       "id": "ca4d",
       "title": "Mi lista de deseos",
-      "items": []
-    },
-    {
-      "id": "21e8",
-      "title": "Test",
       "items": []
     },
     {

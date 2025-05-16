@@ -23,12 +23,14 @@ export function Home() {
         loadWishlists();
     }, []);
 
-    
+    const handleDelete = (id) => {
+        setWishlists(wishlists.filter((wishlist) => wishlist.id !== id));
+    }
 
     return(
         <div >
            
-            <WishesCategories wishlists = {wishlists}/>
+            <WishesCategories wishlists = {wishlists} onDelete={handleDelete}/>
 
 
         </div>

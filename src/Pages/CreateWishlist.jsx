@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createWishlist } from "../services/api";
+import { ImageUploader } from "../components/ImageUploader";
 
 export function CreateWishlist() {
     const [title, setTitle] = useState("");
@@ -11,11 +12,15 @@ export function CreateWishlist() {
     
     const navigate = useNavigate();
     
+    const handleImageUploaded = (url) => {
+        setImageUrl(url);
+    };
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         
         if (!title.trim()) {
-            setError("El título es obligatorio");
+            setError("Title is required");
             return;
         }
         
@@ -25,7 +30,7 @@ export function CreateWishlist() {
         try {
             await createWishlist({
                 title: title,
-                image: imageUrl.trim() || null,
+                image: imageUrl || null,
                 items: [] 
             });
             
@@ -33,7 +38,7 @@ export function CreateWishlist() {
             setTimeout(() => navigate("/"), 1000);
             
         } catch (err) {
-            setError("Error al crear la wishlist. Inténtalo de nuevo.");
+            setError("Error creating wishlist. Please try again.");
             console.error(err);
         } finally {
             setIsLoading(false);
@@ -46,7 +51,7 @@ export function CreateWishlist() {
 
             {success && (
                 <div className="bg-green-100 border border-green-400 text-green-700 p-3 rounded mb-4">
-                    ¡Wishlist creada exitosamente! Redirigiendo...
+                    Wishlist created successfully! Redirecting...
                 </div>
             )}
             
@@ -62,7 +67,7 @@ export function CreateWishlist() {
                         htmlFor="title" 
                         className="block text-gray-700 font-bold mb-2"
                     >
-                        Título de la Wishlist:
+                        Wishlist Title:
                     </label>
                     <input
                         type="text"
@@ -70,34 +75,28 @@ export function CreateWishlist() {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-emerald-500"
-                        placeholder="Ej: Mi lista de deseos"
+                        placeholder="E.g. My wishlist"
                         required
                     />
                 </div>
 
-                <div className="mb-4">
-                    <label 
-                        htmlFor="imageUrl" 
-                        className="block text-gray-700 font-bold mb-2"
-                    >
-                        URL de imagen (opcional):
-                    </label>
-                    <input
-                        type="url"
-                        id="imageUrl"
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
-                        className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-emerald-500"
-                        placeholder="https://ejemplo.com/imagen.jpg"
-                    />
-                </div>
+                <ImageUploader 
+                    onImageUploaded={handleImageUploaded} 
+                    onError={setError} 
+                />
+                
+                {imageUrl && (
+                    <div className="mb-4">
+                        <p className="text-sm text-green-600">Image uploaded successfully</p>
+                    </div>
+                )}
                 
                 <button 
                     type="submit" 
                     className={`w-full bg-emerald-500 text-white font-bold py-2 px-4 rounded hover:bg-emerald-600 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                     disabled={isLoading}
                 >
-                    {isLoading ? 'Creando...' : 'Crear Wishlist'}
+                    {isLoading ? 'Creating...' : 'Create Wishlist'}
                 </button>
                 
                 <button 
@@ -105,7 +104,7 @@ export function CreateWishlist() {
                     onClick={() => navigate("/")}
                     className="w-full mt-2 bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded hover:bg-gray-400"
                 >
-                    Cancelar
+                    Cancel
                 </button>
             </form>
         </div>
