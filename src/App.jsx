@@ -29,7 +29,7 @@ function App() {
           <Route path="/about" element={<About/>} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/create-wishlist" element={<CreateWishlist />} />
-          <Route path="/add-wishes" element={<AddWishes />} />
+          <Route path="/wishlist/:id/add-wishes" element={<AddWishes />} />
           <Route path="/wisheslist/:id" element={<WishesList/>} />
           <Route path="/wisheslist/:id/wish/:id" element={<WishCardDetails/>} />
         </Routes>

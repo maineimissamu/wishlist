@@ -38,7 +38,7 @@ export function WishesList() {
                     )
                 })}
 
-                <Link to="/add-wishes" className="flex flex-col items-center bg-white rounded-3xl shadow border border-gray-200 hover:shadow-xl group overflow-hidden aspect-square">
+                <Link to={`/wishlist/${id}/add-wishes`} className="flex flex-col items-center bg-white rounded-3xl shadow border border-gray-200 hover:shadow-xl group overflow-hidden aspect-square">
                 <div className="flex-1 flex items-center justify-center w-full">
                     <span className="text-8xl text-gray-400 group-hover:text-emerald-500">+</span>
                 </div>

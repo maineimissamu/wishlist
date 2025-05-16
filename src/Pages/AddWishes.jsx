@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createWishlist } from "../services/api";
+import { addItem } from "../services/api";
+import { useParams } from "react-router-dom";
 
 export function AddWishes() {
     const [title, setTitle] = useState("");
@@ -14,7 +15,11 @@ export function AddWishes() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
+
+    const id = useParams()
     
+    const newId = id.id
+    console.log(newId)
 
     console.log(description)
 
@@ -23,7 +28,7 @@ export function AddWishes() {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+        console.log("este es", id)
         if (!title.trim()) {
             setError("El título es obligatorio");
             return;
@@ -31,20 +36,22 @@ export function AddWishes() {
         
         setIsLoading(true);
         setError("");
+
         
         try {
-            await createWishlist({
+            
+            const item = {
                 title: title,
                 image: imageUrl.trim() || null,
                 description: description,
                 status: status,
                 price: price,
                 priority: priority
-            });
-            
+            }
+            await addItem(newId, item)
             setSuccess(true);
-            setTimeout(() => navigate("/"), 1000);
-            
+            setTimeout(() => navigate(-1), 1000);
+
         } catch (err) {
             setError("Error al añadir producto. Inténtalo de nuevo.");
             console.error(err);
@@ -187,7 +194,7 @@ export function AddWishes() {
                 
                 <button 
                     type="button" 
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate(-1)}
                     className="w-full mt-2 bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded hover:bg-gray-400"
                 >
                     Cancel
