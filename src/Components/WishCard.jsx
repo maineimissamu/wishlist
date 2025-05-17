@@ -1,11 +1,12 @@
 import { Link, useParams } from "react-router-dom"
 import { deleteItem } from "../services/api";
-import { FaClipboard, FaTrash } from "react-icons/fa6";
+import { FaClipboardList, FaTrash } from "react-icons/fa6";
 
 export function WishCard({wish, onDelete }) {
     const {id} = useParams();
 
-    console.log(wish.id)
+    console.log(wish)
+
 const handleDelete = async () => {
     try {
       await deleteItem(id, wish.id);
@@ -23,8 +24,16 @@ const handleDelete = async () => {
             
             
             
-            <div className="relative h-1/2 w-full bg-cover bg-center"
-                 style={{backgroundImage: "url('https://img.freepik.com/foto-gratis/arreglo-coleccion-estacionaria-moderna_23-2149309643.jpg?semt=ais_hybrid&w=740')"}}>
+
+            <div className="relative h-1/2 w-full bg-cover bg-center flex-1 flex items-center justify-center">
+                    {wish.image ? (
+                        <img src={wish.image} alt={wish.title} className="w-full h-full object-cover" />
+                        ) : (
+                        <div className="w-32 h-32 bg-gray-100 rounded-full flex items-center justify-center">
+                            <FaClipboardList className="text-gray-300" size={40} />
+                        </div>
+                    )}
+
                         <button 
                             onClick={(e) => handleDelete(e, wish.id)}
                             className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full z-10 hover:bg-red-600"
@@ -42,6 +51,7 @@ const handleDelete = async () => {
                     <p className="text-black text-base">{wish.description}</p>
                     <p className="text-black text-base font-medium">Status: {wish.status}</p>
                 </div>
+                
             </Link>  
         </div>
            

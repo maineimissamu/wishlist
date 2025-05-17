@@ -14,138 +14,6 @@
           "price": 100,
           "status": "active",
           "id": 10292
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 36011
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 42119
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 90940
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 67457
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 20200
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 25245
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 31868
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 23427
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 87879
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 18754
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 30663
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 1194
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 81037
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 54149
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 61367
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 86763
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 34408
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 3428
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 39301
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 97553
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 96690
-        },
-        {
-          "name": "Producto 1",
-          "price": 100,
-          "status": "active",
-          "id": 20341
         }
       ]
     },
@@ -154,34 +22,54 @@
       "title": "Regalos de cumpleaños",
       "items": [
         {
-          "id": 21,
-          "name": "Libro",
-          "description": "El señor de los anillos"
-        },
-        {
-          "id": 22,
-          "name": "SketchBook",
-          "description": "The best quality of pages in terms of texture."
-        },
-        {
-          "title": "Computer Desktop",
+          "title": "libro",
           "image": null,
-          "description": "Computer Asus - Perfect for gaming",
-          "status": "",
-          "price": "999.99",
-          "priority": "",
-          "id": 72478
+          "description": "para leer",
+          "status": "To Order",
+          "price": "9.99",
+          "priority": "High",
+          "id": 50841
+        },
+        {
+          "title": "Peluche Pug",
+          "image": "http://res.cloudinary.com/dvbzyltiy/image/upload/v1747464238/ey0t0uufiacfrr3s3x6x.png",
+          "description": "El mejor peluche para ti.",
+          "status": "Available",
+          "price": "4.99",
+          "priority": "Medium",
+          "id": 31781
         }
       ]
     },
     {
-      "id": "ca4d",
-      "title": "Mi lista de deseos",
-      "items": []
+      "id": "5ac1",
+      "title": "My new Plants",
+      "image": null,
+      "items": [
+        {
+          "title": "Yellow Orchid",
+          "image": null,
+          "description": "best flowers",
+          "status": "To Order",
+          "price": "19.99",
+          "priority": "Medium",
+          "id": 25637
+        },
+        {
+          "title": "Purple Orchid",
+          "image": null,
+          "description": "hsfghdfghdfg",
+          "status": "Available",
+          "price": "14.99",
+          "priority": "Low",
+          "id": 2159
+        }
+      ]
     },
     {
-      "id": "9b78",
-      "title": "test 2",
+      "id": "4408",
+      "title": "Peluches",
+      "image": "http://res.cloudinary.com/dvbzyltiy/image/upload/v1747464291/eztikplgimrgc5va5m5r.png",
       "items": []
     }
   ]

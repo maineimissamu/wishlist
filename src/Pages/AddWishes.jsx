@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addItem } from "../services/api";
 import { useParams } from "react-router-dom";
+import { ImageUploader } from "../components/ImageUploader";
 
 export function AddWishes() {
     const [title, setTitle] = useState("");
@@ -19,20 +20,38 @@ export function AddWishes() {
     const id = useParams()
     
     const newId = id.id
-    console.log(newId)
+    
+    const MIN_LENGTH = 20;
+    const MAX_LENGTH = 200;
 
-    console.log(description)
+    const handleChange = (e) => {
+    const valor = e.target.value;
+    setDescription(valor);
 
+    if (valor.length < MIN_LENGTH) {
+      setError(`La descripción debe tener al menos ${MIN_LENGTH} caracteres.`);
+    } else {
+      setError('');
+    }
+    };
+
+    const handleImageUploaded = (url) => {
+        setImageUrl(url);
+    };
 
     const navigate = useNavigate();
+
+    
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         console.log("este es", id)
         if (!title.trim()) {
             setError("El título es obligatorio");
             return;
         }
+     
         
         setIsLoading(true);
         setError("");
@@ -42,7 +61,7 @@ export function AddWishes() {
             
             const item = {
                 title: title,
-                image: imageUrl.trim() || null,
+                image: imageUrl || null,
                 description: description,
                 status: status,
                 price: price,
@@ -95,22 +114,16 @@ export function AddWishes() {
                     />
                 </div>
 
-                <div className="mb-4">
-                    <label 
-                        htmlFor="imageUrl" 
-                        className="block text-gray-700 font-bold mb-2"
-                    >
-                        Image's URL (optional):
-                    </label>
-                    <input
-                        type="url"
-                        id="imageUrl"
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
-                        className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-emerald-500"
-                        placeholder="https://ejemplo.com/imagen.jpg"
-                    />
-                </div>
+                <ImageUploader 
+                        onImageUploaded={handleImageUploaded} 
+                        onError={setError} 
+                />
+                                
+                {imageUrl && (
+                        <div className="mb-4">
+                        <p className="text-sm text-green-600">Image uploaded successfully</p>
+                        </div>
+                )}
 
                 <div className="mb-4">
                     <label 
@@ -119,13 +132,15 @@ export function AddWishes() {
                     >
                         Description:
                     </label>
-                    <input
+                    <textarea
                         type="text"
+                        rows="5"
                         id="description"
                         value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-emerald-500"
+                        onChange={handleChange}
+                        className={`w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-emerald-500 ${error ? 'border-red-500' : 'border-gray-300' }`}
                         placeholder="Ej: This amazing book..."
+                        maxLength={MAX_LENGTH}
                         required
                     />
                 </div>
@@ -160,6 +175,7 @@ export function AddWishes() {
                         className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-emerald-500"
                         required
                     >
+                        <option value="" disabled>Select priority</option>
                         <option value="Available">Available</option>
                         <option value="To Order">To Order</option>
                     </select>    
@@ -178,9 +194,10 @@ export function AddWishes() {
                         className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-emerald-500"
                         required
                     >
-                        <option value="High">High</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Low">Low</option>
+                         <option value="" disabled>Select priority</option>
+                         <option value="High">High</option>
+                         <option value="Medium">Medium</option>
+                         <option value="Low">Low</option>
                     </select>    
                 </div>
                 

@@ -37,7 +37,7 @@ export function WishCardDetails(){
             
                 <div className="flex flex-col lg:flex-row gap-6 ">
                     <div className="flex-1 " >
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 mt-4 p-4 text-center  text-white rounded-lg">{wish.name}</h1>
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 mt-4 p-4 text-center  text-white rounded-lg">{wish.title}</h1>
                         <p className="text-base sm:text-lg mb-4 bg-white border rounded-lg p-1">Description: {wish.description}</p>
                         <p className="text-base sm:text-lg mb-4 bg-white border rounded-lg p-1">Status:</p>
                         <p className="text-base sm:text-lg mb-4 bg-white border rounded-lg p-1">Status:</p>
