@@ -36,12 +36,8 @@ export function Sidebar() {
                             <span>About</span>
                         </Link>
                     </li>
-                    <li className="mb-2">
-                        <Link to="/contact"  className="flex items-center px-4 py-3 hover:bg-white hover:bg-opacity-20 rounded" onClick={() => isMobile && setIsOpen(false)}>
-                            <FaPhone className="mr-3 text-xl" />
-                            <span>Contact us</span>
-                        </Link>
-                    </li>
+                    
+                    
                     
                     <div className="my-4 border-t border-white border-opacity-20 mx-4"></div>
 

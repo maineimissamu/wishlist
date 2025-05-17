@@ -4,11 +4,11 @@ import { useState, useEffect } from "react"
 import { Sidebar } from "./components/Sidebar"
 import { Home } from "./pages/Home"
 import { About } from "./pages/About"
-import { Contact } from "./pages/Contact"
 import { WishesList } from "./components/WishesList"
 import { WishCardDetails } from "./pages/WishCardDetails"
 import { CreateWishlist } from "./pages/CreateWishlist"
 import { AddWishes } from "./pages/AddWishes"
+
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -26,7 +26,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/about" element={<About/>} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/create-wishlist" element={<CreateWishlist />} />
           <Route path="/wishlist/:id/add-wishes" element={<AddWishes />} />
           <Route path="/wisheslist/:id" element={<WishesList/>} />
