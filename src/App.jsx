@@ -9,7 +9,6 @@ import { WishesList } from "./components/WishesList"
 import { WishCardDetails } from "./pages/WishCardDetails"
 import { CreateWishlist } from "./pages/CreateWishlist"
 import { AddWishes } from "./pages/AddWishes"
-
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
