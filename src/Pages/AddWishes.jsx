@@ -7,11 +7,11 @@ import { ImageUploader } from "../components/ImageUploader";
 export function AddWishes() {
     const [title, setTitle] = useState("");
     const [imageUrl, setImageUrl] = useState("");
-
     const [description, setDescription] = useState("");
     const [status, setStatus] = useState("");
     const [price, setPrice] = useState("");
-    const [priority, setPriority] = useState("")
+    const [priority, setPriority] = useState("");
+    const [purchaseUrl, setPurchaseUrl] = useState("");
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
@@ -65,7 +65,8 @@ export function AddWishes() {
                 description: description,
                 status: status,
                 price: price,
-                priority: priority
+                priority: priority,
+                purchaseUrl: purchaseUrl
             }
             await addItem(newId, item)
             setSuccess(true);
@@ -159,6 +160,23 @@ export function AddWishes() {
                         onChange={(e) => setPrice(e.target.value)}
                         className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-emerald-500"
                         required
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label 
+                        htmlFor="purchaseUrl" 
+                        className="block text-gray-700 font-bold mb-2"
+                    >
+                        Purchase URL:
+                    </label>
+                    <input
+                        type="url"
+                        id="purchaseUrl"
+                        value={purchaseUrl}
+                        onChange={(e) => setPurchaseUrl(e.target.value)}
+                        className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-emerald-500"
+                        placeholder="https://example.com/product"
                     />
                 </div>
 

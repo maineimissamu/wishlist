@@ -6,29 +6,43 @@ export function WishCardDetails(){
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const [wish, setWish] = useState([]);
+    const [wish, setWish] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const loadWish = async() => {
             try {
-                    const data = await getWishlists();
-                    console.log(data)
-                    const allArticles = data.flatMap(deseo => deseo.items)
-                    const wishy = allArticles.find(item => item.id == id)
-                    setWish(wishy)
-                } catch (err){
-                    console.log(err)
-                }
+                setLoading(true);
+                const data = await getWishlists();
+                console.log(data)
+                const allArticles = data.flatMap(deseo => deseo.items)
+                const wishy = allArticles.find(item => item.id == id)
+                setWish(wishy || {})
+            } catch (err){
+                console.log(err)
+            } finally {
+                setLoading(false);
+            }
         }
         loadWish();
-    },[])
+    },[id])
 
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
+            </div>
+        );
+    }
 
-    
-
-
-
-   
+    if (!wish || Object.keys(wish).length === 0) {
+        return (
+            <div className="text-center p-8">
+                <h2 className="text-2xl font-bold text-red-600">Wish not found</h2>
+                <button onClick={()=>navigate(-1)} className="mt-4 bg-emerald-600 text-white font-bold py-2 px-4 rounded-md shadow-md hover:bg-emerald-700">Go Back</button>
+            </div>
+        );
+    }
 
     return(
         <div>
@@ -37,15 +51,23 @@ export function WishCardDetails(){
             
                 <div className="flex flex-col lg:flex-row gap-6 ">
                     <div className="flex-1 " >
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 mt-4 p-4 text-center  text-white rounded-lg">{wish.title}</h1>
-                        <p className="text-base sm:text-lg mb-4 bg-white border rounded-lg p-1">Description: {wish.description}</p>
-                        <p className="text-base sm:text-lg mb-4 bg-white border rounded-lg p-1">Status:</p>
-                        <p className="text-base sm:text-lg mb-4 bg-white border rounded-lg p-1">Status:</p>
-                        <p className="text-base sm:text-lg mb-4 bg-white border rounded-lg p-1">Status:</p>
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 mt-4 p-4 text-center text-white rounded-lg">{wish.title}</h1>
+                        <p className="text-base sm:text-lg mb-4 bg-white border rounded-lg p-3"><span className="font-bold">Description:</span> {wish.description}</p>
+                        <p className="text-base sm:text-lg mb-4 bg-white border rounded-lg p-3"><span className="font-bold">Price:</span> {wish.price ? `$${wish.price}` : 'Not specified'}</p>
+                        <p className="text-base sm:text-lg mb-4 bg-white border rounded-lg p-3"><span className="font-bold">Priority:</span> {wish.priority || 'Normal'}</p>
+                        <p className="text-base sm:text-lg mb-4 bg-white border rounded-lg p-3"><span className="font-bold">Status:</span> {wish.status || 'Pending'}</p>
+                        {wish.purchaseUrl && (
+                            <p className="text-base sm:text-lg mb-4 bg-white border rounded-lg p-3">
+                                <span className="font-bold">Purchase URL:</span> 
+                                <a href={wish.purchaseUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline ml-2">
+                                    {wish.purchaseUrl}
+                                </a>
+                            </p>
+                        )}
                     </div>
 
                     <div className="flex-none w-full lg:w-1/2 h-64 sm:h-80 md:h-96 rounded-[20px] md:rounded-[20px] border border-gray-400 shadow-md bg-cover bg-center min-w-0" role="img"
-                        style={{ backgroundImage: "url(https://img.freepik.com/foto-gratis/arreglo-coleccion-estacionaria-moderna_23-2149309643.jpg?semt=ais_hybrid&w=740)" }}>    
+                        style={{ backgroundImage: `url(${wish.image || "https://img.freepik.com/foto-gratis/arreglo-coleccion-estacionaria-moderna_23-2149309643.jpg?semt=ais_hybrid&w=740"})` }}>    
                     </div>
                     
                 </div>
@@ -53,10 +75,26 @@ export function WishCardDetails(){
         
         </div>
 
-            <div className="flex flex-col sm:flex-row justify-center  gap-4">
-            <button onClick={()=>navigate(-1)} className="flex items-center gap-2 bg-white text-green-800 font-bold py-2 px-4 rounded-md shadow-md hover:bg-gray-100 transition-all transform hover:scale-105 mt-6">Go back</button>
-                    
-            <button onClick={()=>navigate(-1)} className="flex items-center gap-2 bg-red-600 text-white font-bold py-2 px-4 rounded-md shadow-md hover:bg-red-300 transition-all transform hover:scale-105 mt-6">Buy it now!</button>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <button onClick={()=>navigate(-1)} className="flex items-center gap-2 bg-white text-green-800 font-bold py-2 px-4 rounded-md shadow-md hover:bg-gray-100 transition-all transform hover:scale-105 mt-6">Go back</button>
+                
+                {wish.purchaseUrl ? (
+                    <a 
+                        href={wish.purchaseUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex items-center justify-center gap-2 bg-red-600 text-white font-bold py-2 px-4 rounded-md shadow-md hover:bg-red-500 transition-all transform hover:scale-105 mt-6"
+                    >
+                        Buy it now!
+                    </a>
+                ) : (
+                    <button 
+                        className="flex items-center gap-2 bg-gray-400 text-white font-bold py-2 px-4 rounded-md shadow-md cursor-not-allowed mt-6"
+                        disabled
+                    >
+                        No purchase link available
+                    </button>
+                )}
             </div>
         </div>
     )
